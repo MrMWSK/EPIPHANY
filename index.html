@@ -16,19 +16,19 @@ input[type=file]{max-width:100%;padding:10px;border:1px dashed #9eaaa1;border-ra
 .controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:18px 0}.controls-spacer{flex:1}
 button,select{font:inherit;border:1px solid var(--line);border-radius:10px;padding:9px 13px;background:var(--paper);color:var(--ink)}
 button{cursor:pointer}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}button:disabled{opacity:.45;cursor:not-allowed}button.active{background:var(--soft);border-color:var(--accent)}
-label.small{font-size:13px;color:var(--muted);display:flex;gap:7px;align-items:center}.type-controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.type-group{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:9px 12px;border:1px solid var(--line);border-radius:12px}.type-group legend{font-size:13px;color:var(--muted);padding:0 5px}
-.accent-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.accent-controls input[type=color]{width:40px;height:40px;padding:3px;border:1px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer}.accent-presets{display:flex;gap:7px;align-items:center}.accent-preset{width:32px;height:32px;min-height:32px;padding:0;border-radius:50%;background:var(--swatch);border:2px solid var(--line)}.accent-preset[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}.accent-preset[data-color="#315e50"]{--swatch:#315e50}.accent-preset[data-color="#536b8a"]{--swatch:#536b8a}.accent-preset[data-color="#8a5b74"]{--swatch:#8a5b74}.accent-preset[data-color="#a36b32"]{--swatch:#a36b32}
-.reader{display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px;margin-top:18px;align-items:start}aside,.reading{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;min-width:0}aside h2,.reading h2{font-size:15px;margin:0 0 10px}.reader-content{min-width:0}.language-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.language-reading{min-height:420px;overflow:hidden}.language-reading h2{display:flex;align-items:center;gap:8px}.language-reading[hidden],.language-columns[hidden],.shared-reading[hidden]{display:none!important}.language-reading.urdu-reading .language-content{direction:rtl;text-align:right}.language-content{font-size:var(--reader-size,18px);line-height:var(--reader-leading,1.8);overflow-wrap:anywhere;min-width:0}.language-content [data-mrmwsk-lang="roman"]{direction:ltr;text-align:left}
-#toc{max-height:55vh;overflow:auto}#toc button{width:100%;text-align:left;margin:3px 0;background:transparent;border:0}#toc button:hover{background:var(--soft)}#empty{color:var(--muted);text-align:center;padding:80px 20px}
-.language-content img,.language-content video{max-width:100%;height:auto}.language-content table{border-collapse:collapse;max-width:100%;display:block;overflow:auto}.language-content td,.language-content th{border:1px solid var(--line);padding:6px}.language-content [hidden]{display:none!important}
+label.small{font-size:13px;color:var(--muted);display:flex;gap:7px;align-items:center}.type-controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.type-group{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:240px}.type-group legend{padding:0 8px;font-weight:600;color:var(--ink)}.type-group label{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.type-group input[type=range]{width:150px}
+.accent-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.accent-controls input[type=color]{width:40px;height:40px;padding:3px;border:1px solid var(--line);border-radius:10px;background:transparent}.accent-presets{display:flex;gap:7px;flex-wrap:wrap}.accent-preset{width:22px;height:22px;border-radius:50%;padding:0;border:2px solid transparent}.accent-preset[aria-pressed="true"]{border-color:var(--ink)}
+.reader{display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px;margin-top:18px;align-items:start}aside,.reading{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px}
+#toc{max-height:55vh;overflow:auto}#toc button{width:100%;text-align:left;margin:3px 0;background:transparent;border:0}#toc button:hover{background:var(--soft)}#empty{color:var(--muted);text-align:center;padding:22px}
+.language-columns{display:grid;grid-template-columns:1fr 1fr;gap:18px}.language-reading{min-height:440px}.language-content{font-size:var(--reader-size,18px);line-height:var(--reader-leading,1.8);word-wrap:break-word}.language-content h1,.language-content h2,.language-content h3{scroll-margin-top:24px}.language-content img,.language-content video{max-width:100%;height:auto}.language-content table{border-collapse:collapse;max-width:100%;display:block;overflow:auto}.language-content td,.language-content th{border:1px solid var(--line);padding:8px 10px;text-align:left}.language-content figure{margin:1em 0}.language-content blockquote{margin:0 0 0 1em;padding-left:1em;border-left:3px solid var(--line);color:var(--muted)}
 .status{font-size:13px;color:var(--muted);margin-top:12px}footer{text-align:center;color:var(--muted);font-size:12px;padding:24px}
 #focusExit{display:none;position:fixed;right:16px;top:16px;z-index:20;background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:var(--shadow)}
-body.focus-mode header,body.focus-mode main>.panel,body.focus-mode aside,body.focus-mode footer,body.focus-mode #status{display:none!important}body.focus-mode #focusExit{display:block}body.focus-mode main{margin-top:16px}body.focus-mode .reader{grid-template-columns:minmax(0,1fr);margin-top:0}
-body.dark{--bg:#151a17;--paper:#202722;--ink:#e8eee9;--muted:#aab6ae;--line:#3c4840;--soft:#304238;--shadow:0 18px 50px #0004}body.dark button,body.dark select{background:#26312a;color:var(--ink);border-color:var(--line)}body.dark .accent-preset{background:var(--swatch)}
+body.focus-mode header,body.focus-mode main>.panel,body.focus-mode aside,body.focus-mode footer,body.focus-mode #status{display:none!important}body.focus-mode #focusExit{display:block}body.focus-mode .reader{grid-template-columns:1fr}body.focus-mode .language-reading{min-height:0}
+body.dark{--bg:#151a17;--paper:#202722;--ink:#e8eee9;--muted:#aab6ae;--line:#3c4840;--soft:#304238;--shadow:0 18px 50px #0004}body.dark button,body.dark select{background:#26312a;color:var(--ink);border-color:var(--line)}body.dark .language-content td,body.dark .language-content th{border-color:var(--line)}
 body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9cbb4;--soft:#eee2cb}
 @media(max-width:900px){.reader{grid-template-columns:1fr}#toc{max-height:190px}}
-@media(max-width:760px){.language-columns{grid-template-columns:1fr}.panel{padding:17px}.reading{padding:15px}.language-reading{min-height:0}.type-group{width:100%;min-width:0}.type-group label{flex-wrap:wrap}.controls>*{max-width:100%}.controls-spacer{display:none}.accent-controls{width:100%}button,select,input[type=color]{min-height:42px}.accent-preset{min-height:34px;width:34px}.type-controls{width:100%}input[type=range]{max-width:min(42vw,180px)}}
-@media print{body{background:#fff;color:#000}.panel,aside,.reading{box-shadow:none}.controls,.type-controls,.accent-controls,aside,header,footer,#focusExit{display:none!important}.reader{display:block}.language-columns{grid-template-columns:1fr 1fr}.language-reading,.shared-reading{break-inside:avoid}}
+@media(max-width:760px){.language-columns{grid-template-columns:1fr}.panel{padding:17px}.reading{padding:15px}.language-reading{min-height:0}.type-group{width:100%;min-width:0}.type-group label{flex-basis:100%}}
+@media print{body{background:#fff;color:#000}.panel,aside,.reading{box-shadow:none}.controls,.type-controls,.accent-controls,aside,header,footer,#focusExit{display:none!important}.reader{display:block}.language-columns{display:block}.language-reading{break-inside:avoid;page-break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -37,7 +37,7 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
 <button id="focusExit" type="button" aria-label="Exit Focus Mode">Exit Focus Mode</button>
 <main>
 <section class="panel">
- <div class="upload"><div><strong>Open an HTML file</strong><div class="hint">Choose a .html or .htm file from your device. Nothing is uploaded to a server.</div></div><input id="file" type="file" accept=".html,.htm,text/html"></div>
+ <div class="upload"><div><strong>Open an HTML file</strong><div class="hint">Choose a .html or .htm file from your device. Nothing is uploaded to a server.</div></div><input id="file" type="file" accept=".html,.htm,text/html" aria-label="Open an HTML file"></div>
  <div class="controls">
   <button id="all" class="active" disabled>All content</button><button id="urdu" disabled>Urdu</button><button id="roman" disabled>Roman Urdu</button><button id="english" disabled>English</button>
   <span class="controls-spacer"></span>
@@ -55,12 +55,12 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
  </div>
  <div class="type-controls" aria-label="Independent reading typography">
   <fieldset class="type-group"><legend>Urdu &amp; Roman Urdu</legend>
-   <label class="small" for="urduFont">Font<select id="urduFont" aria-label="Urdu and Roman Urdu font family"><option value="'Noto Nastaliq Urdu',serif">Noto Nastaliq Urdu</option><option value="'Noto Naskh Arabic',serif">Noto Naskh Arabic</option><option value="serif">Serif</option><option value="system-ui,sans-serif">System</option></select></label>
+   <label class="small" for="urduFont">Font<select id="urduFont" aria-label="Urdu and Roman Urdu font family"><option value="'Noto Nastaliq Urdu',serif">Noto Nastaliq Urdu</option><option value="'Noto Naskh Arabic',serif">Noto Naskh Arabic</option><option value="'Segoe UI',sans-serif">Segoe UI</option></select></label>
    <label class="small" for="urduSize">Size <input id="urduSize" type="range" min="14" max="32" value="20"><output id="urduSizeValue">20px</output></label>
    <label class="small" for="urduSpacing">Line spacing <input id="urduSpacing" type="range" min="12" max="28" value="20"><output id="urduSpacingValue">2.0</output></label>
   </fieldset>
   <fieldset class="type-group"><legend>English</legend>
-   <label class="small" for="englishFont">Font<select id="englishFont" aria-label="English font family"><option value="system-ui,-apple-system,Segoe UI,sans-serif">System</option><option value="Georgia,serif">Georgia</option><option value="Arial,sans-serif">Arial</option><option value="serif">Serif</option></select></label>
+   <label class="small" for="englishFont">Font<select id="englishFont" aria-label="English font family"><option value="system-ui,-apple-system,Segoe UI,sans-serif">System</option><option value="Georgia,serif">Georgia</option><option value="'Times New Roman',serif">Times</option></select></label>
    <label class="small" for="englishSize">Size <input id="englishSize" type="range" min="14" max="32" value="18"><output id="englishSizeValue">18px</output></label>
    <label class="small" for="englishSpacing">Line spacing <input id="englishSpacing" type="range" min="12" max="28" value="18"><output id="englishSpacingValue">1.8</output></label>
   </fieldset>
@@ -81,12 +81,12 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
 </main>
 <footer>MrMWSK Reader Studio · Runs locally in your browser · Not affiliated with any publisher</footer>
 <script>
-(()=>{
+(() => {
  const $=id=>document.getElementById(id);
  let cleanDoc=null,filename='document.html',detected={urdu:0,roman:0,english:0};
  const PREFS_KEY='mrmwsk-reader-preferences-v1';
  const defaults={theme:'light',accent:'#315e50',urduFont:"'Noto Nastaliq Urdu',serif",urduSize:'20',urduSpacing:'20',englishFont:'system-ui,-apple-system,Segoe UI,sans-serif',englishSize:'18',englishSpacing:'18'};
- const SAFE_TAGS=new Set(['a','abbr','address','article','aside','b','bdi','bdo','blockquote','br','caption','cite','code','col','colgroup','dd','del','details','dfn','div','dl','dt','em','figcaption','figure','footer','h1','h2','h3','h4','h5','h6','header','hr','i','img','ins','kbd','li','main','mark','nav','ol','p','pre','q','rp','rt','ruby','s','samp','section','small','span','strong','sub','summary','sup','table','tbody','td','th','thead','time','tr','tt','u','ul','var']);
+ const SAFE_TAGS=new Set(['a','abbr','address','article','aside','b','bdi','bdo','blockquote','br','caption','cite','code','col','colgroup','dd','del','details','dfn','div','dl','dt','em','figcaption','figure','footer','form','h1','h2','h3','h4','h5','h6','header','hr','i','img','ins','kbd','label','legend','li','main','mark','nav','ol','p','pre','q','rp','rt','ruby','s','samp','section','small','span','strong','sub','summary','sup','table','tbody','td','th','thead','time','tr','u','ul','var']);
  const SAFE_ATTRS={
   a:['href','title','target','rel','aria-label'],
   img:['src','alt','title','width','height'],
@@ -117,8 +117,24 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
   try{
     const url=new URL(trimmed,location.href);
     if(['http:','https:','mailto:'].includes(url.protocol))return url.href;
-  }catch(_){}
+  }catch(_){ }
   return null;
+ }
+ function normalizeAssetUrl(value){
+  const trimmed=(value||'').trim();
+  if(!trimmed)return null;
+  if(trimmed.startsWith('#'))return trimmed;
+  if(/^\s*(javascript:|vbscript:)/i.test(trimmed))return null;
+  try{
+    const url=new URL(trimmed,location.href);
+    if(url.protocol==='data:'){
+      return /^data:image\//i.test(trimmed) ? url.href : null;
+    }
+    if(['file:','blob:'].includes(url.protocol))return url.href;
+    return null;
+  }catch(_){
+    return null;
+  }
  }
  function sanitizeNode(node){
   if(node.nodeType===Node.TEXT_NODE) return node;
@@ -137,11 +153,13 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
    if(name==='poster') continue;
    if(name.startsWith('on')) continue;
    if(!allowed.includes(name)) continue;
-   if(name==='href'||name==='src'){const safe=normalizeUrl(attr.value); if(safe){clean.setAttribute(name,safe);}}else if(name==='target'){if(attr.value===' _blank'||attr.value==='_blank')clean.setAttribute(name,'_blank');}
-   else {clean.setAttribute(name,attr.value);}
+   if(name==='href'||name==='src'){
+    const safe = name==='src' ? normalizeAssetUrl(attr.value) : normalizeUrl(attr.value);
+    if(safe) clean.setAttribute(name,safe);
+   } else if(name==='target'){if(attr.value.toLowerCase()==='_blank')clean.setAttribute(name,attr.value);} else {clean.setAttribute(name,attr.value);}
   }
-  if(tag==='a'){const rel=[...(clean.getAttribute('rel')||'').split(/\s+/).filter(Boolean)];if(!rel.includes('noopener'))rel.push('noopener');if(!rel.includes('noreferrer'))rel.push('noreferrer');clean.setAttribute('rel',rel.join(' '));if(clean.getAttribute('target')==='_blank'){clean.setAttribute('rel',rel.join(' '));}}
-  if(tag==='img'){const src=clean.getAttribute('src');if(src===null || isDangerousUrl(src)) return null;}
+  if(tag==='a'){const rel=[...(clean.getAttribute('rel')||'').split(/\s+/).filter(Boolean)];if(!rel.includes('noopener'))rel.push('noopener');if(!rel.includes('noreferrer'))rel.push('noreferrer');clean.setAttribute('rel',rel.join(' '));}
+  if(tag==='img'){const src=clean.getAttribute('src');if(src===null || !normalizeAssetUrl(src)) return null;}
   for(const child of [...node.childNodes]){const cleaned=sanitizeNode(child); if(cleaned) clean.appendChild(cleaned);}
   return clean;
  }
@@ -156,10 +174,11 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
    attrs.forEach(attr=>{
     const name=attr.name.toLowerCase();
     if(name==='style'||name.startsWith('on')||name==='srcdoc'||name==='xmlns'||name==='srcset'||name==='poster'){el.removeAttribute(name);return;}
-    if(name==='href'||name==='src'){const safe=normalizeUrl(attr.value); if(!safe){el.removeAttribute(name); return;}}
+    if(name==='href'){const safe=normalizeUrl(attr.value); if(!safe){el.removeAttribute(name); return;}}
+    if(name==='src'){const safe=normalizeAssetUrl(attr.value); if(!safe){el.removeAttribute(name); return;}}
     if(name==='target'&&attr.value.toLowerCase()!=='_blank'){el.removeAttribute(name);} 
    });
-   if(el.tagName.toLowerCase()==='a'&&el.getAttribute('target')==='_blank'){const rel=(el.getAttribute('rel')||'').trim();const parts=new Set(rel?rel.split(/\s+/):[]);parts.add('noopener');parts.add('noreferrer');el.setAttribute('rel',Array.from(parts).join(' '));}
+   if(el.tagName.toLowerCase()==='a'&&el.getAttribute('target')==='_blank'){const rel=(el.getAttribute('rel')||'').trim();const parts=new Set(rel?rel.split(/\s+/):[]);parts.add('noopener');parts.add('noreferrer');el.setAttribute('rel',[...parts].join(' '));}
   });
   return safeDoc;
  }
@@ -171,7 +190,7 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
  function appendClones(target,nodes){nodes.forEach(node=>target.appendChild(document.importNode(node,true)));}
  function buildTOC(){
   const toc=$('toc');toc.innerHTML='';const roots=[$('urduContent'),$('englishContent'),$('sharedContent')];let index=0;
-  roots.forEach(root=>root.querySelectorAll('h1,h2,h3').forEach(h=>{h.id='mrmwsk-heading-'+index++;const b=document.createElement('button');b.type='button';b.textContent=h.textContent.trim().slice(0,90)||`Section ${index}`;b.onclick=()=>h.scrollIntoView({behavior:'smooth',block:'start'});toc.appendChild(b);}));
+  roots.forEach(root=>root.querySelectorAll('h1,h2,h3').forEach(h=>{h.id='mrmwsk-heading-'+index++;const b=document.createElement('button');b.type='button';b.textContent=h.textContent.trim().slice(0,80);b.addEventListener('click',()=>{h.scrollIntoView({behavior:'smooth',block:'start'});});toc.appendChild(b);}));
   if(!toc.childElementCount)toc.textContent='No headings found.';
  }
  function applyFilter(which){
@@ -185,12 +204,12 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
   blocks.forEach(({el,lang})=>{const clone=document.importNode(el,true);clone.dataset.mrmwskLang=lang;detected[lang]++;if(lang==='english')$('englishContent').appendChild(clone);else $('urduContent').appendChild(clone);});
   if(labeled.length){
    const shared=source.cloneNode(true),sharedBlocks=getLanguageBlocks(shared).blocks;sharedBlocks.forEach(({el})=>el.remove());appendClones($('sharedContent'),[...shared.childNodes]);
-   const hasShared=!!$('sharedContent').textContent.trim()||!!$('sharedContent').querySelector('*');$('sharedPanel').hidden=!hasShared;$('sharedHeading').textContent='Unlabelled content';$('languageColumns').hidden=false;$('empty').hidden=true;
+   const hasShared=!!$('sharedContent').textContent.trim()||!!$('sharedContent').querySelector('*');$('sharedPanel').hidden=!hasShared;$('sharedHeading').textContent='Unlabelled content';$('languageColumns').hidden=false;
   }else{
-   appendClones($('sharedContent'),[...source.childNodes]);$('sharedHeading').textContent='Document content · no language labels detected';$('sharedPanel').hidden=false;$('languageColumns').hidden=true;$('empty').hidden=true;
+   appendClones($('sharedContent'),[...source.childNodes]);$('sharedHeading').textContent='Document content · no language labels detected';$('sharedPanel').hidden=false;$('languageColumns').hidden=true;
   }
   ['urdu','roman','english'].forEach(k=>$(k).disabled=detected[k]===0);['all','print','download'].forEach(k=>$(k).disabled=false);buildTOC();applyFilter('all');
-  $('status').textContent=`Loaded ${filename} · ${detected.urdu} Urdu, ${detected.roman} Roman Urdu, ${detected.english} English sections detected.${labeled.length?'':' No language labels found; showing the document once without guessing.'}`;
+  $('status').textContent=`Loaded ${filename} · ${detected.urdu} Urdu, ${detected.roman} Roman Urdu, ${detected.english} English sections detected.${labeled.length?'':' No language labels found; showing the full document.'}`;
  }
  function hexToRgba(hex, alpha=1){const base=hex.replace('#','');const bigint=parseInt(base.length===3?base.split('').map(ch=>ch+ch).join(''):base,16);const r=(bigint>>16)&255,g=(bigint>>8)&255,b=bigint&255;return `rgba(${r}, ${g}, ${b}, ${alpha})`;}
  function setType(language){
@@ -215,7 +234,7 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
  }
  function savePreferences(){
   const preferences={theme:$('theme').value,accent:$('accentPicker').value,urduFont:$('urduFont').value,urduSize:$('urduSize').value,urduSpacing:$('urduSpacing').value,englishFont:$('englishFont').value,englishSize:$('englishSize').value,englishSpacing:$('englishSpacing').value};
-  try{localStorage.setItem(PREFS_KEY,JSON.stringify(preferences));}catch(_){}
+  try{localStorage.setItem(PREFS_KEY,JSON.stringify(preferences));}catch(_){ }
  }
  function restorePreferences(){
   let saved={};
@@ -234,18 +253,18 @@ body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9
  }
  $('file').addEventListener('change',async e=>{
   const f=e.target.files&&e.target.files[0];if(!f)return;if(f.size>15*1024*1024){$('status').textContent='This file is larger than 15 MB. Please choose a smaller HTML file.';return;}
-  filename=f.name;try{const raw=await f.text(),doc=new DOMParser().parseFromString(raw,'text/html');const safeDoc=sanitize(doc);cleanDoc=safeDoc;render();}catch(err){$('status').textContent='Could not read this HTML file. Please check that it is valid HTML.';}
+  filename=f.name;try{const raw=await f.text(),doc=new DOMParser().parseFromString(raw,'text/html');const safeDoc=sanitize(doc);cleanDoc=safeDoc;render();}catch(err){$('status').textContent='Could not load this HTML file. Please choose a valid .html or .htm document.';}
  });
  ['all','urdu','roman','english'].forEach(k=>$(k).addEventListener('click',()=>applyFilter(k)));
  $('theme').addEventListener('change',()=>{applyTheme($('theme').value);savePreferences();});
  $('accentPicker').addEventListener('input',()=>{applyAccent($('accentPicker').value);savePreferences();});
  document.querySelectorAll('.accent-preset').forEach(button=>button.addEventListener('click',()=>{applyAccent(button.dataset.color);savePreferences();}));
- ['urdu','english'].forEach(language=>['Font','Size','Spacing'].forEach(control=>$(language+control).addEventListener('input',()=>{setType(language);savePreferences();})));
+ ['urdu','english'].forEach(language=>['Font','Size','Spacing'].forEach(control=>$(language+control).addEventListener('input',()=>{setType(language);savePreferences();}))); 
  $('focusToggle').addEventListener('click',()=>setFocusMode(!document.body.classList.contains('focus-mode')));
  $('focusExit').addEventListener('click',()=>setFocusMode(false));
  $('print').addEventListener('click',()=>{
   const w=window.open('','_blank');if(!w){$('status').textContent='Please allow pop-ups to print this document.';return;}
-  const content=$('.reader-content').innerHTML;w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>MrMWSK Reader Studio — Print</title><style>body{font:16px/1.7 system-ui,sans-serif;color:#20231f}.language-columns{display:grid;grid-template-columns:1fr 1fr;gap:24px}.language-reading,.shared-reading{break-inside:avoid}.language-reading[hidden],.shared-reading[hidden]{display:none!important}.urdu-reading .language-content{text-align:right;direction:rtl}img{max-width:100%}</style></head><body>'+content+'</body></html>');w.document.close();w.focus();w.print();
+  const content=$('.reader-content').innerHTML;w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>MrMWSK Reader Studio — Print</title><style>body{font:16px/1.7 system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.7;color:#111;margin:24px}img{max-width:100%;height:auto}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:8px;text-align:left}</style></head><body>'+content+'</body></html>');w.document.close();w.focus();w.print();
  });
  $('download').addEventListener('click',()=>{
   const source=cleanDoc&&cleanDoc.body?cleanDoc.body:document.body;
