@@ -1,23 +1,26 @@
 MRMWSK READER STUDIO
 ====================
-A browser-based HTML reader branded by MrMWSK.
+
+A browser-based HTML reader built for local documents. It detects Urdu, Roman Urdu, and English sections, lets you adjust the reading layout, and keeps the file on the user's device.
 
 Files
 -----
-- index.html: the complete standalone app.
+- index.html: standalone app
+- README.md: product overview and usage notes
+- README.txt: plain-text summary
 
-Publish using the existing repository
---------------------------------------
-1. Open https://github.com/MrMWSK/EPIPHANY
-2. Upload index.html and README.txt from this package to the repository root (the top level).
-3. Open Settings > Pages.
-4. Under Build and deployment, choose Deploy from a branch.
-5. Select branch main and folder /(root), then Save.
-6. After GitHub Pages finishes publishing, the site should be available at:
-   https://mrmwsk.github.io/EPIPHANY/
+Run
+---
+1. Open index.html in a modern browser.
+2. Choose an HTML or HTM file from your device.
+3. Review the cleaned reading preview, adjust typography/theme, and export when needed.
 
-App notes
----------
-The app processes the selected HTML file in the visitor's browser; it does not upload user files to a server. It accepts .html/.htm files up to 15 MB, offers reading themes and text sizing, can print/save as PDF, and can download a cleaned HTML copy. Language filters recognise common class names and lang attributes (for example .urdu-text, .roman-urdu, .english-text, lang="ur", and lang="en"). Unlabelled sections remain visible under All content. The app does not automatically translate text.
+Privacy
+-------
+The app processes files in the browser and does not upload them to a server. Scripts, forms, embedded documents, and remote media requests are removed from the preview.
 
-Before public launch, test it with several representative HTML files and browsers.
+Publish
+-------
+This is a static app and can be deployed to GitHub Pages or any static hosting provider by serving the repository root.
+
+Before public launch, test the app with several representative HTML files and browsers.
