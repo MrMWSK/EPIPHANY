@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="MrMWSK Reader Studio — preview and read HTML books and documents in multiple languages.">
+<title>MrMWSK Reader Studio</title>
+<style>
+:root{--bg:#f4f2ed;--paper:#fffefa;--ink:#20231f;--muted:#687067;--line:#deded5;--accent:#315e50;--soft:#e7eee9;--shadow:0 18px 50px #1d30201a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:26px max(20px,calc((100vw - 1120px)/2));background:#1e332c;color:#fff}
+.brand{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#c5d8cd;font-weight:700}
+h1{font-size:clamp(28px,4vw,42px);line-height:1.1;margin:8px 0}
+header p{color:#d4e0d8;max-width:650px;margin:10px 0 0}
+main{max-width:1120px;margin:28px auto;padding:0 18px 50px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px}
+.upload{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.upload strong{display:block;font-size:18px}.hint{color:var(--muted);font-size:13px}
+input[type=file]{max-width:100%;padding:10px;border:1px dashed #9eaaa1;border-radius:12px;background:#f8faf7}
+.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:18px 0}
+button,select{font:inherit;border:1px solid var(--line);border-radius:10px;padding:9px 13px;background:#fff;color:var(--ink)}
+button{cursor:pointer}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}button:disabled{opacity:.45;cursor:not-allowed}
+button.active{background:var(--soft);border-color:#9bb5a6}
+label.small{font-size:13px;color:var(--muted);display:flex;gap:7px;align-items:center}
+.reader{display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px;margin-top:18px}
+aside,.reading{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;min-width:0}
+aside h2{font-size:15px;margin:0 0 10px}.reading{min-height:420px}
+#toc{max-height:55vh;overflow:auto}#toc button{width:100%;text-align:left;margin:3px 0;background:transparent;border:0}
+#toc button:hover{background:var(--soft)}
+#empty{color:var(--muted);text-align:center;padding:80px 20px}
+#preview{font-size:18px;line-height:1.8;overflow-wrap:anywhere}
+#preview img,#preview video{max-width:100%;height:auto}
+#preview table{border-collapse:collapse;max-width:100%;display:block;overflow:auto}#preview td,#preview th{border:1px solid var(--line);padding:6px}
+#preview [hidden]{display:none!important}
+.status{font-size:13px;color:var(--muted);margin-top:12px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:24px}
+body.dark{--bg:#151a17;--paper:#202722;--ink:#e8eee9;--muted:#aab6ae;--line:#3c4840;--soft:#304238;--shadow:0 18px 50px #0004}
+body.dark button,body.dark select{background:#26312a;color:var(--ink);border-color:var(--line)}
+body.sepia{--bg:#eee5d3;--paper:#fbf2df;--ink:#433729;--muted:#796b58;--line:#d9cbb4;--soft:#eee2cb}
+@media(max-width:760px){.reader{grid-template-columns:1fr}#toc{max-height:190px}.panel{padding:17px}.reading{padding:15px}}
+</style>
+</head>
+<body>
+<header><div class="brand">MrMWSK · Reader Studio</div><h1>Your HTML, easier to read.</h1>
+<p>Upload an HTML book or document, preview it safely, and explore its language sections with a cleaner reading layout. Your file stays on your device.</p></header>
+<main>
+<section class="panel">
+ <div class="upload"><div><strong>Open an HTML file</strong><div class="hint">Choose a .html or .htm file from your device. Nothing is uploaded to a server.</div></div>
+ <input id="file" type="file" accept=".html,.htm,text/html"></div>
+ <div class="controls">
+  <button id="all" class="active" disabled>All content</button><button id="urdu" disabled>Urdu</button><button id="roman" disabled>Roman Urdu</button><button id="english" disabled>English</button>
+  <span style="flex:1"></span>
+  <label class="small">Text size <input id="size" type="range" min="14" max="28" value="18"></label>
+  <select id="theme" aria-label="Reading theme"><option value="light">Light</option><option value="sepia">Sepia</option><option value="dark">Dark</option></select>
+  <button id="print" disabled>Print / Save PDF</button>
+  <button id="download" disabled>Download cleaned HTML</button>
+ </div>
+ <div class="status" id="status" role="status">Choose an HTML file to begin.</div>
+</section>
+<div class="reader">
+ <aside><h2>Document contents</h2><div id="toc" class="hint">Headings will appear here after upload.</div></aside>
+ <section class="reading"><div id="empty"> <strong>Your reading preview will appear here.</strong><br><span class="hint">For privacy, active scripts and embedded frames are removed from the preview.</span></div><article id="preview"></article></section>
+</div>
+</main>
+<footer>MrMWSK Reader Studio · Runs locally in your browser · Not affiliated with any publisher</footer>
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+let cleanDoc=null, filename="document.html", detected={urdu:0,roman:0,english:0};
+const langOf=el=>{
+ const s=((el.getAttribute('lang')||'')+' '+(el.className&&typeof el.className==='string'?el.className:'')+' '+(el.id||'')).toLowerCase();
+ if(/urdu|nastaliq|arabic|\bur\b/.test(s))return 'urdu';
+ if(/roman|translit|roman-urdu/.test(s))return 'roman';
+ if(/english|translation|\ben\b/.test(s))return 'english';
+ return '';
+};
+function sanitize(doc){
+ doc.querySelectorAll('script,iframe,object,embed,form,base,meta[http-equiv],link[rel="import"]').forEach(n=>n.remove());
+ doc.querySelectorAll('*').forEach(el=>{
+   [...el.attributes].forEach(a=>{
+     if(/^on/i.test(a.name)||((a.name==='href'||a.name==='src')&&/^\s*javascript:/i.test(a.value)))el.removeAttribute(a.name);
+   });
+ });
+ return doc;
+}
+function render(){
+ const target=$('preview');target.innerHTML='';$('empty').style.display='none';
+ const source=cleanDoc.body?cleanDoc.body:cleanDoc.documentElement;
+ [...source.childNodes].forEach(n=>target.appendChild(document.importNode(n,true)));
+ // Language labels and language toggles
+ detected={urdu:0,roman:0,english:0};
+ target.querySelectorAll('*').forEach(el=>{const l=langOf(el);if(l){el.dataset.mrmwskLang=l;detected[l]++;}});
+ ['urdu','roman','english'].forEach(k=>$(k).disabled=detected[k]===0);
+ ['all','urdu','roman','english','print','download'].forEach(k=>$(k).disabled=false);
+ buildTOC();
+ $('status').textContent=`Loaded ${filename} · ${detected.urdu} Urdu, ${detected.roman} Roman Urdu, ${detected.english} English sections detected.`;
+}
+function buildTOC(){
+ const toc=$('toc');toc.innerHTML='';
+ const heads=$('preview').querySelectorAll('h1,h2,h3');
+ if(!heads.length){toc.textContent='No headings found.';return;}
+ heads.forEach((h,i)=>{if(!h.id)h.id='mrmwsk-heading-'+i;const b=document.createElement('button');b.textContent=h.textContent.trim().slice(0,90)||`Section ${i+1}`;b.onclick=()=>h.scrollIntoView({behavior:'smooth',block:'start'});toc.appendChild(b);});
+}
+function filter(which){
+ $('preview').querySelectorAll('[data-mrmwsk-lang]').forEach(el=>{el.hidden=which!=='all'&&el.dataset.mrmwskLang!==which;});
+ ['all','urdu','roman','english'].forEach(k=>$(k).classList.toggle('active',k===which));
+ $('status').textContent=which==='all'?'Showing all detected content.':`Showing ${which} sections. Unlabelled content remains hidden only when it has a detected language label.`;
+}
+$('file').addEventListener('change',async e=>{
+ const f=e.target.files&&e.target.files[0];if(!f)return;
+ if(f.size>15*1024*1024){$('status').textContent='This file is larger than 15 MB. Please choose a smaller HTML file.';return;}
+ filename=f.name;
+ try{const raw=await f.text();const doc=new DOMParser().parseFromString(raw,'text/html');cleanDoc=sanitize(doc);render();filter('all');}
+ catch(err){$('status').textContent='Could not read this HTML file. Please check that it is valid HTML.';}
+});
+['all','urdu','roman','english'].forEach(k=>$(k).addEventListener('click',()=>filter(k)));
+$('size').addEventListener('input',e=>$('preview').style.fontSize=e.target.value+'px');
+$('theme').addEventListener('change',e=>{document.body.classList.remove('dark','sepia');if(e.target.value!=='light')document.body.classList.add(e.target.value);});
+$('print').addEventListener('click',()=>{const w=window.open('','_blank');if(!w){$('status').textContent='Please allow pop-ups to print this document.';return;}w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>'+filename.replace(/[<>&"]/g,'')+'</title><style>body{font:18px/1.8 Georgia,serif;max-width:800px;margin:40px auto;padding:0 20px}img{max-width:100%} [hidden]{display:none!important}</style></head><body>'+ $('preview').innerHTML+'</body></html>');w.document.close();w.focus();w.print();});
+$('download').addEventListener('click',()=>{
+ const html='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+filename.replace(/[<>&"]/g,'')+'</title></head><body>'+ $('preview').innerHTML+'</body></html>';
+ const blob=new Blob([html],{type:'text/html;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mrmwsk-'+filename.replace(/[^a-z0-9._-]/gi,'_');a.click();URL.revokeObjectURL(a.href);
+});
+})();
+</script>
+</body></html>
